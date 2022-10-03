@@ -14,15 +14,15 @@ on:
       DEVICE_TREE_URL:
         description: 'DEVICE_TREE_URL'
         required: true
-        default: 'https://github.com/oakieville/B140dl-device-tree'
+        default: 'https://github.com/TeamWin/android_device_asus_I003D'
       DEVICE_TREE_BRANCH:
         description: 'DEVICE_TREE_BRANCH'
         required: true
-        default: 'twrp-12.1'
+        default: 'android-12.1'
       DEVICE_PATH:
         description: 'DEVICE_PATH'
         required: true
-        default: 'device/blu/B140DL'
+        default: 'device/asus/I003D'
       COMMON_TREE_URL:
         description: 'COMMON_TREE_URL (if no common tree, leave blank)'
         required: false
@@ -32,11 +32,11 @@ on:
       DEVICE_NAME:
         description: 'DEVICE_NAME'
         required: true
-        default: 'B140DL'
+        default: 'I003D'
       MAKEFILE_NAME:
         description: 'MAKEFILE_NAME'
         required: true
-        default: 'twrp_B140DL'
+        default: 'twrp_I003D'
       BUILD_TARGET:
         description: 'BUILD_TARGET'
         required: true
@@ -105,8 +105,8 @@ jobs:
         mkdir workspace
         cd workspace
         echo "::set-output name=pwd::$(pwd)"
-        git config --global user.name "oakieville"
-        git config --global user.email "oakieville209@gmail.com"
+        git config --global user.name "Captain Throwback"
+        git config --global user.email "captainthrowback@hotmail.com"
         repo init --depth=1 -u ${{ github.event.inputs.MANIFEST_URL }} -b ${{ github.event.inputs.MANIFEST_BRANCH }}
       id: pwd
           
@@ -132,7 +132,7 @@ jobs:
       uses: haya14busa/action-cond@v1
       id: buildtree
       with:
-        cond: ${{ github.event.inputs.MANIFEST_BRANCH == 'twrp-12.1' || github.event.inputs.MANIFEST_BRANCH == 'twrp-12.1' }}
+        cond: ${{ github.event.inputs.MANIFEST_BRANCH == 'twrp-11' || github.event.inputs.MANIFEST_BRANCH == 'twrp-12.1' }}
         if_true: twrp
         if_false: omni
 
